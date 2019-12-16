@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %} 
+{% load static %} 
+{% block title %} Portafolio {% endblock %} 
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading text-center">
+                <h1 class="grande">Portafolio</h1>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+        <!-- fondo gradiente -->
+        <div class="row p-1">
+            
+            {% for p in portfolio %}
+              
+            
+                <div class="colorzilla col-md-9 mx-auto d-flex align-items-center justify-content-md-center mb-5" style="height: 200px;">
+                    <a class='block py-5 w-100' href="{{p.link}}" target="_blank">
+                        <div class="text-center text-danger ">
+                            <h2 class='font-weight-bold display-5 my-0'>{{p.title | upper}}</h2>
+                            <p class="lead my-0">{{p.description | upper}} </p>
+                        </div>
+                    </a>
+                </div>
+                        
+           
+            {% endfor %}
+                
+        </div>
+
+      
+
+        </div>
+        <!-- /.container -->
+        <hr> {%endblock%}

@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+ {% load static %} 
+ {% block title %} Acerca de {% endblock %} 
+ {%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading text-center">
+                <h1 class="grande">Acerca de mi</h1>
+                <span class="subheading">Quien es Alejandro de la O?</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="text-center mb-2">
+                            <img src="{% static 'core/img/deadpool.png' %}" alt="..." class="rounded-circle img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <p>Hola que tal, mi nombre es Alejandro De la O y soy el creador de este pequeño blog, con la finalidad de ir publicando posts de diversos temas de mi interes y que segun yo tambien les puedes interesar a ustedes, y asi me puedan conocer
+                    un poco mas.</p>
+                <p>Soy un apasionado a la programacion asi como tambien a todo lo que tenga que ver con la tecnologia, por tanto esa es una de las razones por la cual realizo este blog, no hay dia que no toque codigo o aprenda cualquier cosa que tenga que
+                    ver con ello.</p>
+                <p>Aproximadamente llevo programando desde que empeze la carrera de sistemas pero la realidad a lo que llamo bien bien programando o aprendiendo como debe ser, considero que 1 año... no es que los 6 años de la carrera hayan sido en valde,
+                    peroooo, sinceramente no aprendi mucho de programacion...</p>
+                <p>Esto me llevo a mi a ser un autodidacta adicto, osea, todo el mundo tendria que ser autodidacta para aprender cosas nuevas cada dia, pero yo me obsesione y mas cuando conoci uno de mis lenguajes favoritos, mas bien dicho mi lenguaje del
+                    cual me enamore PYTHON.</p>
+                <p>Por cierto que creen, este blog, esta escrito en Python, asi que sin mas, te invito a compartir con quien gustes este blog, donde estare compartiendo varios post de varias cosas que aprendo o suenan interesantes y que talvez te pueden
+                    interesar o ayudar a ti.</p>
+                <p>No olvides hechar un vistazo a mi portafolio, para que puedas visitar mis otros proyectos y tambien puedes contactarme mandandome un email.</p>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr> {%endblock%}

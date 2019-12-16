@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content='Mi blog personal, donde comparto cosas de mi interes y segun yo tambien le interesan a los demas'>
+    <meta name="keywords" content='noticias, musica, deportes, entretenimiento'>
+    <meta name="auhtor" content='Alejandro de la O'>
+    {% load static %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'core/css/clean-blog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/css/estilos.css' %}" rel="stylesheet">
+
+
+    <title>{% block title %}{% endblock %} | Paletalex</title>
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color: #5BC0BE;" id="mainNav">
+        <div class="container ">
+            <a class="navbar-brand" href="{% url 'home' %}">Alejandro de la O</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+            <div class="collapse navbar-collapse " id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="{% url 'home' %}">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ACERCA DE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio' %}">PORTAFOLIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">CONTACTO</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div style="margin-top:100px;"></div>
+
+    {% block content %} {% endblock content %}
+
+    <!-- Paginacion -->
+
+    <div class="container mt-2">
+        {% if is_paginated %} {% if page_obj.has_previous %}
+        <div class="clearfix">
+            <a class="btn btn-primary float-left" href="?page={{ page_obj.previous_page_number }}">&larr; ANTERIOR </a>
+        </div>
+        {% endif %} {% if page_obj.has_next %}
+        <div class="clearfix">
+            <a class="btn btn-primary float-right" href="?page={{ page_obj.next_page_number }}">SIGUIENTE &rarr;</a>
+        </div>
+        {% endif %} {% endif %}
+
+
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <ul class="list-inline text-center">
+
+                            {% if LINK_FACEBOOK %}
+
+                            <li class="list-inline-item">
+                                <a href="{{LINK_FACEBOOK}}" target='_blank'>
+                                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                                </a>
+                            </li>
+                            {% endif %} 
+                            {% if LINK_TWITTER %}
+                            <li class="list-inline-item">
+                                <a href="{{LINK_TWITTER}}" target='_blank'>
+                                    <span class="fa-stack fa-lg">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                                </a>
+                            </li>
+                            {% endif %} 
+                            {% if LINK_INSTAGRAM %}
+                            <li class="list-inline-item">
+                                <a href="{{LINK_INSTAGRAM}}" target='_blank'>
+                                    <span class="fa-stack fa-lg">
+                          <i class="fas fa-circle fa-stack-2x"></i>
+                          <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                        </span>
+                                </a>
+                            </li>
+                            {% endif %} 
+                            {% if LINK_YOUTUBE %}
+                            <li class="list-inline-item">
+                                <a href="{{LINK_YOUTUBE}}" target='_blank'>
+                                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                    </span>
+                                </a>
+                            </li>
+                            {% endif %} 
+                            {% if LINK_GITHUB %}
+                            <li class="list-inline-item">
+                                <a href="{{LINK_GITHUB}}" target='_blank'>
+                                    <span class="fa-stack fa-lg">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                      </span>
+                                </a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                        <p class="copyright text-muted">Copyright &copy; Alejandro de la O - {{year}}</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="{% static 'core/js/clean-blog.min.js' %}"></script>
+        <script src="{% static 'core/js/app.js' %}"></script>
+
+        <!-- Facebook -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v5.0"></script>
+
+
+</body>
+
+</html>

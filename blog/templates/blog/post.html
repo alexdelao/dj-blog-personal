@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %} {{post.title}} {% endblock %} {%block content%} {% include 'blog/includes/menu_crear.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="post-heading">
+                <h1 class="mediana">{{post.title}}</h1>
+                <h2 class="subheading">{{post.subtitle}}</h2>
+                <img src="{{post.image.url}}" alt="" class="img-fluid w-100">
+                <span class="meta">Por:
+              <a href="#">{{post.author}}</a> - 
+              {{post.published | date:'SHORT_DATE_FORMAT'}}</span> {% if request.user.is_staff %}
+                <a href="{% url 'update' post.slug %}">Editar</a> | <a href="{% url 'delete' post.slug %}">Eliminar</a> {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Post Content -->
+    <article>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    {{post.content|safe}}
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Comentarios plugin facebook -->
+    <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div><br>
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+    {%endblock%}

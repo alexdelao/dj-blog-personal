@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %} 
+{% load static %} 
+{% block title %} Posts {% endblock %} 
+{%block content%}
+{% include 'blog/includes/menu_crear.html' %}
+
+<div class="container bg-white">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading text-center">
+                <h1 class="grande">Blog personal</h1>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Contenido -->
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+
+
+            {% for post in object_list %}
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div>
+                        <a href="{% url 'post' post.slug %}"><img src="{{post.image.url}}" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="post-preview">
+                        <a href="{% url 'post' post.slug %}">
+                            <h2 class="post-title">
+                                {{post.title}}
+                            </h2>
+                            <h3 class="post-subtitle">
+                                {{post.subtitle}}
+                            </h3>
+                        </a>
+                        <p class="post-meta">
+                            Por: <a href="#">{{post.author}}</a> - {{post.published | date:'SHORT_DATE_FORMAT'}}</p>
+                            {% if request.user.is_staff %} <a href="{% url 'update' post.slug %}">Editar</a> 
+                            | <a href="{% url 'delete' post.slug %}">Eliminar</a>{% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr> {% endfor %}
+
+
+        </div>
+
+       
+        </div>
+    </div>
+</div>
+<hr> {% endblock %}

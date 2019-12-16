@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %} Contacto {% endblock %} {%block content%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading text-center">
+                <h1 class="grande">CONTACTO</h1>
+                <span class="subheading">Quieres colaborar en algun proyecto conmigo?... Mandame un correo.</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-4 col-md-4 offset-lg-1">
+                <img class="img-fluid avatar" src="{% static 'core/img/buzon.jpg' %}" alt="">
+            </div>
+            <div class="col-lg-7 col-md-8">
+                {% if 'ok' in request.GET %}
+                <p style="color: green;">Tu mensaje a sido enviado correctamente</p>
+                {% endif %} {% if 'fail' in request.GET %}
+                <p style="color: red;">Tu mensaje no pudo ser enviado correctamente</p>
+                {% endif %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Nombre</label>
+                            <!-- <input type="text" class="form-control" placeholder="Ingresa tu nombre" id="name" required data-validation-required-message="Ingresa tu nombre."> -->
+                            {{form.name}}
+                            <p class="help-block text-danger"></p>
+                            {{form.name.errors}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Correo:</label>
+                            <!-- <input type="email" class="form-control" placeholder="Ingresa tu correo" id="email" required data-validation-required-message="Tu direccion de correo."> -->
+                            {{form.email}}
+                            <p class="help-block text-danger"></p>
+                            {{form.email.errors}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Mensaje</label>
+                            <!-- <textarea rows="5" class="form-control" placeholder="Mensaje" id="message" required data-validation-required-message="Mensaje."></textarea> -->
+                            {{form.content}}
+                            <p class="help-block text-danger"></p>
+                            {{form.content.errors}}
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="sendMessageButton">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr> {%endblock%}
